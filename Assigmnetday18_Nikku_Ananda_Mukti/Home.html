@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dibimbing - Beranda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f9fa;
+      color: #222;
+    }
+    /* Topbar */
+    .topbar {
+      background: #000000;
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar .left, .topbar .right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 0 32px;
+    }
+    .topbar .right a img {
+      width: 16px;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .topbar .right a img:hover {
+      opacity: 1;
+    }
+    /* Navbar */
+    .navbar {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 18px 32px 0 32px;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar .logo {
+      height: 38px;
+      margin-right: 32px;
+    }
+    .navbar .menu {
+      display: flex;
+      gap: 28px;
+      flex: 1;
+    }
+    .navbar .menu a {
+      color: #222;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .navbar .menu a:hover {
+      color: #007c91;
+    }
+    .navbar .search {
+      margin-left: auto;
+      opacity: 0.7;
+      cursor: pointer;
+    }
+    /* Layout Utama */
+    .main-container {
+      display: flex;
+      gap: 34px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 16px 0 16px;
+    }
+    .main-content {
+      flex: 2.2;
+      min-width: 0;
+    }
+    .sidebar {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    /* Headline Utama */
+    .headline-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      margin-bottom: 28px;
+    }
+    .headline-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      display: block;
+    }
+    .headline-content {
+      padding: 18px 22px 18px 22px;
+    }
+    .headline-category {
+      color: #007c91;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .headline-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #222;
+      line-height: 1.25;
+    }
+    .headline-meta {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    .headline-desc {
+      color: #444;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    /* Trending */
+    .trending-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 18px 16px;
+      margin-bottom: 0;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    }
+    .trending-title {
+      color: #007c91;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trending-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 12px;
+    }
+    .trending-item {
+      background: none;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .trending-item img {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .trending-cat {
+      color: #007c91;
+      font-size: 11px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    .trending-head {
+      font-size: 13px;
+      font-weight: bold;
+      color: #222;
+      margin: 2px 0;
+      line-height: 1.3;
+    }
+    .trending-meta {
+      color: #888;
+      font-size: 11px;
+    }
+    /* Rekomendasi */
+    .recommendation-box {
+      background: #0e5868;
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px 16px;
+    }
+    .recommendation-box h3 {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .recommendation {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 18px;
+      gap: 12px;
+    }
+    .recommendation img {
+      width: 55px;
+      height: 55px;
+      border-radius: 7px;
+      object-fit: cover;
+    }
+    .rec-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.2;
+    }
+    /* Daftar Berita */
+    .btn-terbaru {
+      background: #0e5868;
+      color: #fff;
+      border: none;
+      padding: 8px 22px;
+      border-radius: 7px;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 24px;
+      cursor: pointer;
+    }
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+    .news-item {
+      display: flex;
+      gap: 20px;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 18px;
+    }
+    .news-item img {
+      width: 115px;
+      height: 75px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    .news-desc {
+      flex: 1;
+    }
+    .category {
+      display: inline-block;
+      background: #eaf4f7;
+      color: #0e5868;
+      font-size: 13px;
+      padding: 2px 10px;
+      border-radius: 5px;
+      margin-bottom: 7px;
+    }
+    .news-desc h2 {
+      font-size: 18px;
+      margin: 6px 0 8px 0;
+      font-weight: bold;
+      color: #0e5868;
+    }
+    .news-desc p {
+      font-size: 15px;
+      color: #444;
+      margin: 0;
+    }
+    .more-link {
+      display: block;
+      text-align: center;
+      margin: 28px auto 0 auto;
+      color: #0e5868;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    /* Footer */
+    footer {
+      background: #eaf4f7;
+      margin-top: 40px;
+      padding: 30px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      font-size: 15px;
+    }
+    .footer-left {
+      width: 33%;
+    }
+    .footer-left .logo {
+      width: 110px;
+      margin-bottom: 8px;
+    }
+    .footer-center, .footer-right {
+      width: 18%;
+    }
+    .footer-center h4, .footer-right h4 {
+      margin-top: 0;
+      color: #0e5868;
+      font-size: 16px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    footer li {
+      margin-bottom: 6px;
+    }
+    @media (max-width: 1050px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .sidebar {
+        min-width: 0;
+        margin-top: 32px;
+      }
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 30px 16px;
+      }
+      .footer-left, .footer-center, .footer-right {
+        width: 100%;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 10px;
+      }
+      .main-container {
+        padding: 18px 1vw 0 1vw;
+      }
+      .main-content, .sidebar {
+        width: 100%;
+      }
+      .headline-card img {
+        height: 170px;
+      }
+      .trending-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="left">
+      <span>Bootcamp</span>
+      <span>Video Course Online</span>
+      <span>Kelas Gratis</span>
+      <span>Company Training</span>
+      <span>Afiliasi</span>
+    </div>
+    <div class="right">
+      <a href="#"><img src="icon/fb.png" alt="FB"></a>
+      <a href="#"><img src="icon/ig.png" alt="IG"></a>
+      <a href="#"><img src="icon/linkind.png" alt="LinkedIn"></a>
+      <a href="#"><img src="icon/tiktok.png" alt="TikTok"></a>
+      <a href="#"><img src="icon/twiter.png" alt="Twitter"></a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <img src="icon/logoDB.png" alt="Dibimbing Logo" class="logo">
+    <div class="menu">
+      <a href="#">Career</a>
+      <a href="#">Data Science</a>
+      <a href="#">Digital Marketing</a>
+      <a href="#">Web Development</a>
+      <a href="#">UI/UX Design</a>
+      <a href="#">Lainnya ▼</a>
+    </div>
+    <span class="search">🔍</span>
+  </div>
+  <!-- Layout Utama -->
+  <div class="main-container">
+    <!-- Konten Utama -->
+    <div class="main-content">
+      <!-- Headline -->
+      <div class="headline-card">
+        <img src="gambar/trend1.png" alt="Headline">
+        <div class="headline-content">
+          <span class="headline-category">CAREER</span>
+          <div class="headline-title">
+            Biden honors Covid victims: ‘It’s hard sometimes to remember, but that’s how we heal’
+          </div>
+          <div class="headline-meta">by Lionel Vasachev • 31 Mar 2018</div>
+          <div class="headline-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur...
+          </div>
+        </div>
+      </div>
+      <!-- Daftar Berita -->
+      <button class="btn-terbaru">TERBARU</button>
+      <div class="news-list">
+        <div class="news-item">
+          <img src="gambar/trending.png" alt="News 1">
+          <div class="news-desc">
+            <span class="category">JOBS REPORT</span>
+            <h2>Port Workers Portray the Reality of Bottlenecks</h2>
+            <p>Port workers reveal the ongoing challenges and delays in global shipping routes, highlighting the impact on supply chains worldwide.</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="gambar/trend2.png" alt="News 2">
+          <div class="news-desc">
+            <span class="category">CASES</span>
+            <h2>Current US Unemployment Rate Could Reset Baselines</h2>
+            <p>Analysts warn the current unemployment rate may redefine economic expectations for the next decade.</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="gambar/trend3.png" alt="News 3">
+          <div class="news-desc">
+            <span class="category">DIGITAL MARKETING</span>
+            <h2>Three Ways to Diversify Risk and Keep Your Network Running</h2>
+            <p>Discover strategies to minimize business disruption and maintain connectivity in uncertain times.</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="gambar/trend4.png" alt="News 4">
+          <div class="news-desc">
+            <span class="category">WEB DEVELOPMENT</span>
+            <h2>New Post-Covid Indicator Predicts Goods Demand Rising High by Fall</h2>
+            <p>Emerging data suggests a significant spike in consumer demand as economies reopen.</p>
+          </div>
+        </div>
+        <div class="news-item">
+          <img src="gambar/trend1.png" alt="News 5">
+          <div class="news-desc">
+            <span class="category">EVENT</span>
+            <h2>FWD21 Kicks Off with a Keynote on Empowering the Global Trade Ecosystem</h2>
+            <p>Industry leaders gather to discuss digital transformation in global trade at FWD21.</p>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="more-link" style="text-decoration:none; color:#4580ee;">Muat Lebih Banyak</a>
+    </div>
+    <!-- Sidebar Kanan -->
+    <aside class="sidebar">
+      <div class="trending-box">
+        <div class="trending-title">TRENDING</div>
+        <div class="trending-list">
+          <div class="trending-item">
+            <img src="gambar/trending.png" alt="Trending 1">
+            <div class="trending-cat">DATA SCIENCE</div>
+            <div class="trending-head">Digital Freight Forwarding: how it can unlock secrets of your supply chain</div>
+            <div class="trending-meta">Ronald Richards • 26 Nov 2018</div>
+          </div>
+          <div class="trending-item">
+            <img src="gambar/trend1.png" alt="Trending 2">
+            <div class="trending-cat">DIGITAL MARKETING</div>
+            <div class="trending-head">Combatting Coronavirus Chaos</div>
+            <div class="trending-meta">Darlene Robertson • 9 Mar 2020</div>
+          </div>
+          <div class="trending-item">
+            <img src="gambar/trend3.png" alt="Trending 3">
+            <div class="trending-cat">WEB DEVELOPMENT</div>
+            <div class="trending-head">7 reasons why your competitor is moving their freight online.</div>
+            <div class="trending-meta">Jerome Bell • 12 Jun 2019</div>
+          </div>
+          <div class="trending-item">
+            <img src="gambar/trend4.png" alt="Trending 4">
+            <div class="trending-cat">UI/UX DESIGN</div>
+            <div class="trending-head">IMF World Economic Outlook Revises Growth Forecasts</div>
+            <div class="trending-meta">Floyd Miles • 13 Nov 2018</div>
+          </div>
+        </div>
+      </div>
+      <div class="recommendation-box">
+        <h3>REKOMENDASI KAMI</h3>
+        <div class="recommendation">
+          <img src="gambar/trend1.png" alt="Rekomendasi 1">
+          <span class="rec-title">Your Must-Read Newsletter to Optimize for New NFTs</span>
+        </div>
+        <div class="recommendation">
+          <img src="gambar/trend2.png" alt="Rekomendasi 2">
+          <span class="rec-title">Three Ways to Diversify Risk and Keep Your Network Running</span>
+        </div>
+        <div class="recommendation">
+          <img src="gambar/trend3.png" alt="Rekomendasi 3">
+          <span class="rec-title">We’re Winning Medals for NHS Heroes and...</span>
+        </div>
+        <div class="recommendation">
+          <img src="gambar/trend4.png" alt="Rekomendasi 4">
+          <span class="rec-title">Combating Coronavirus Chaos</span>
+        </div>
+        <div class="recommendation">
+          <img src="gambar/trending.png" alt="Rekomendasi 5">
+          <span class="rec-title">Tariffs Could Be Part of Why We’re Short...</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+<!-- Footer -->
+  <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#fafbfb">
+    <tr>
+      <td align="center">
+        <table width="80%" cellpadding="20" cellspacing="0">
+          <tr valign="top">
+            <!-- Column 1: Logo & Info -->
+            <td width="40%">
+              <img src="icon/logoDB.png" alt="Dibimbing Logo" width="130"><br>
+              <span>Your Career Partner</span><br><br>
+              <span>
+                PT. Dibimbing Digital Indonesia<br>
+                Jl. Kemang Utara E No. 52B, RT.8/RW.1, Bangka, Kec. Mampang Prpt.,<br>
+                Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12730
+              </span>
+              <br><br>
+              <!-- Social Media Icons-->
+              <a href="#"><img src="icon/fb.png" width="16" alt="FB" hspace="5"></a>
+              <a href="#"><img src="icon/ig.png" width="16" alt="IG" hspace="5"></a>
+              <a href="#"><img src="icon/linkind.png" width="16" alt="LinkedIn" hspace="5"></a>
+              <a href="#"><img src="icon/tiktok.png" width="16" alt="TikTok" hspace="5"></a>
+              <a href="#"><img src="icon/twiter.png" width="16" alt="Twitter" hspace="5"></a>
+            </td>
+            <!-- Column 2: Services -->
+            <td width="30%">
+            <br>
+          <b>Services</b><br><br>
+        <a href="#" style="text-decoration:none; color:#4580ee;">Video Course Online</a><br><br>
+      <a href="#" style="text-decoration:none; color:#4683f5;">Bootcamp</a><br><br>
+   <a href="#" style="text-decoration:none; color:#437ff0;">Specialized Bootcamp</a><br><br>
+       <a href="#" style="text-decoration:none; color:#3c7bf0;">Mentoring</a><br><br>
+         <a href="#" style="text-decoration:none; color:#427ae2;">For Business</a><br><br>
+         <br>
+          </td>
+            <!-- Column 3: Pages -->
+          <td width="30%">
+       <br>
+    <b>Pages</b><br><br>
+    <a href="#" style="text-decoration:none; color:#3a7af0;">Home</a><br><br>
+    <a href="#" style="text-decoration:none; color:#427deb;">About Us</a><br><br>
+    <a href="#" style="text-decoration:none; color:#3c80fd;;">Blog</a><br><br>
+      <br>
+        </td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center">
+              <font face="Arial" size="2" color="#888">
+                Copyright © 2024. PT Dibimbing Digital Indonesia. All Rights Reserved
+              </font>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

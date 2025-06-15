@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Copywriting vs Content Writing - Dibimbing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+    /* Topbar */
+    .topbar {
+      background: #00080a;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 24px;
+      font-size: 14px;
+    }
+    .topbar .sosmed img {
+      width: 16px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+ /* Navbar */
+    .navbar {
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 18px 32px 0 32px;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar .logo {
+      height: 38px;
+      margin-right: 32px;
+    }
+    .navbar .menu {
+      display: flex;
+      gap: 28px;
+      flex: 1;
+    }
+    .navbar .menu a {
+      color: #222;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .navbar .menu a:hover {
+      color: #007c91;
+    }
+    .navbar .search {
+      margin-left: auto;
+      opacity: 0.7;
+      cursor: pointer;
+    }
+    /* Hero Section */
+    .hero {
+      background: url('gambar/Mawarhitam.png') center/cover no-repeat;
+      min-height: 350px;
+      display: flex;
+      align-items: flex-start;
+      padding: 40px 24px;
+      color: #fff;
+      position: relative;
+    }
+    .hero-content {
+      max-width: 600px;
+      background: rgba(0,43,54,0.7);
+      padding: 24px;
+      border-radius: 12px;
+    }
+    .category {
+      color: #00b3c6;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .hero h1 {
+      font-size: 32px;
+      margin: 16px 0;
+    }
+    .hero .desc {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .hero .meta {
+      font-size: 12px;
+      color: #eee;
+    }
+    .share {
+      margin-top: 12px;
+    }
+    .share span {
+      margin-right: 8px;
+    }
+    .share a img {
+      width: 16px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    /* Layout */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 32px auto;
+      gap: 32px;
+      padding: 0 24px;
+    }
+    .main-content {
+      flex: 2;
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .main-content ul {
+      margin: 0 0 16px 0;
+      padding: 0;
+      list-style: none;
+    }
+    .main-content ul li {
+      margin-bottom: 8px;
+      padding-left: 8px;
+    }
+    .main-content ul li a {
+      color: #6495ED;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .main-content img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    /* Komentar */
+    #comments {
+      margin-top: 32px;
+      background: #f2f2f2;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    #commentForm textarea {
+      width: 100%;
+      min-height: 50px;
+      margin-bottom: 8px;
+      padding: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    #commentForm button {
+      background: #00b3c6;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #commentList {
+      margin-top: 12px;
+    }
+    #commentList .comment {
+      background: #fff;
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      border-left: 3px solid #00b3c6;
+    }
+    /* Sidebar */
+    .sidebar {
+      flex: 1;
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      min-width: 260px;
+    }
+    .sidebar hr {
+      border: none;
+      border-top: 2px solid #00b3c6;
+      width: 40%;
+      margin-left: 0;
+    }
+    .sidebar .artikel {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .sidebar .artikel img {
+      width: 60px;
+      height: 60px;
+      margin-right: 12px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #eee;
+    }
+    .sidebar .artikel-title {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+    .sidebar .artikel-kategori {
+      font-size: 12px;
+      color: #888;
+    }
+    /* Footer */
+    .footer {
+      background: #fff;
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid #eee;
+      color: #007c91;
+      font-size: 14px;
+      margin-top: 32px;
+    }
+    .footer .logo {
+      height: 32px;
+      margin-bottom: 8px;
+    }
+    .footer .sosmed img {
+      width: 16px;
+      margin: 0 5px;
+      vertical-align: middle;
+    }
+    .footer .footer-links {
+      margin-top: 12px;
+      color: #222;
+    }
+    .footer .footer-links b {
+      color: #007c91;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+        gap: 0;
+      }
+      .sidebar {
+        margin-top: 32px;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-nav, .topbar, .hero, .container, .sidebar, .main-content, .footer {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+      }
+      .hero {
+        padding: 20px 8px;
+      }
+      .container {
+        padding: 0 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div>
+      Bootcamp &nbsp; Video Course Online &nbsp; Kelas Gratis &nbsp; Company Training &nbsp; Afiliasi
+    </div>
+    <div class="sosmed">
+      <a href="#"><img src="icon/fb.png" alt="FB"></a>
+      <a href="#"><img src="icon/ig.png" alt="IG"></a>
+      <a href="#"><img src="icon/linkind.png" alt="LinkedIn"></a>
+      <a href="#"><img src="icon/tiktok.png" alt="TikTok"></a>
+      <a href="#"><img src="icon/twiter.png" alt="Twitter"></a>
+    </div>
+  </div>
+  <!-- Navbar -->
+  <div class="navbar">
+    <img src="icon/logoDB.png" alt="Dibimbing Logo" class="logo">
+    <div class="menu">
+      <a href="#">Career</a>
+      <a href="#">Data Science</a>
+      <a href="#">Digital Marketing</a>
+      <a href="#">Web Development</a>
+      <a href="#">UI/UX Design</a>
+      <a href="#">Lainnya ▼</a>
+    </div>
+    <span class="search">🔍</span>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="category">DIGITAL MARKETING</span>
+      <h1>Copywriting vs Content Writing, Ini 5 Perbedaan yang Harus Kamu Ketahui</h1>
+      <p class="desc">Ada dua profesi tulis menulis yang sangat penting dalam dunia marketing. Yaitu, copywriting dan content writing. Tapi sebelum lanjut lebih dalam, kira-kira Sobat MinDii udah tau perbedaannya belum?</p>
+      <span class="meta">Oleh Wade Warren • Konten ini telah ditinjau oleh Darlene Robertson – Mentor Digital Marketing Dibimbing • 26 Jan 2019 • 5 min read • 👁️ 175</span>
+      <div class="share">
+        <span>Share:</span>
+        <a href="#"><img src="icon/fb.png" alt="FB"></a>
+        <a href="#"><img src="icon/ig.png" alt="IG"></a>
+        <a href="#"><img src="icon/linkind.png" alt="LinkedIn"></a>
+        <a href="#"><img src="icon/tiktok.png" alt="TikTok"></a>
+        <a href="#"><img src="icon/twiter.png" alt="Twitter"></a>
+      </div>
+    </div>
+  </section>
+  <!-- Main Content and Sidebar -->
+  <div class="container">
+    <article class="main-content">
+      <b>Isi Artikel</b>
+      <ul>
+        <li><a href="#">1. Definisi Copywriting vs Content Writing</a></li>
+        <li><a href="#">2. Tujuan Penulisan</a></li>
+        <li><a href="#">3. Gaya Bahasa</a></li>
+        <li><a href="#">4. Panjang Tulisan</a></li>
+        <li><a href="#">5. Contoh Penggunaan</a></li>
+      </ul>
+      <img src="gambar/trend1.png" alt="Ilustrasi Copywriting vs Content Writing">
+      <b>Perbedaan Copywriting dan Content Writing</b><br><br>
+      Munculnya Covid-19 di Indonesia mengubah seluruh aktivitas menjadi online. Semenjak itu skill digital marketing mulai digemari dan menjadi salah satu skill penting agar bisnis bisa adaptif dengan situasi yang serba internet ini. Ngomongin soal digital marketing, kira-kira Sobat MinDi udah tau belum ada profesi apa saja yang bisa kamu jajal dalam bidang ini?<br><br>
+      Kali ini MinDi mau bahas dua profesi yang cukup sering kamu dengar dalam dunia digital marketing. Ada dua profesi tulis menulis yang sangat penting dalam dunia marketing. Yaitu, copywriting dan content writing. Tapi, sebelum lanjut, kamu kira-kira Sobat MinDi udah tau perbedaannya belum? Atau jangan-jangan kamu masih menganggap dua profesi ini adalah hal yang sama?<br><br>
+      Buat kamu yang tertarik untuk menyelami dalam profesi ini wajib tau ya tentang perbedaannya. Agar kamu gak salah menyelam, yuk simak lebih lanjut!<br><br>
+      <b>Perbedaan Copywriting dan Content Writing</b><br>
+      Meski keduanya sama-sama kegiatan yang berhubungan dengan dunia kepenulisan, tapi dua profesi ini sama sekali berbeda, lho. Baik dari segi tujuan penulisan hingga teknik penulisannya.<br><br>
+      <b>1. Pengertian copywriting dan content writing</b><br><br>
+      Sobat MinDi pernah penasaran gak sih siapa sosok dibalik pembuatan iklan-iklan yang sering muncul di media sosial atau tagline yang catchy dalam sebuah produk atau bahkan artikel? Ternyata itulah tugas dari copywriting, lho. Jadi copywriting adalah kegiatan merencanakan, menulis, dan mengedit tulisan yang bertujuan untuk mempromosikan suatu produk atau layanan. Tulisan-tulisan mereka akan ditemukan dalam slogan, tagline, kalimat-kalimat menarik yang sering kita lihat di iklan suatu produk.<br><br>
+      Nah sementara content writing adalah kegiatan merencanakan, menulis, dan menghasilkan konten yang berisi informasi atau penjelasan mendetail tentang suatu produk. Kalau kamu sering membaca postingan artikel di website atau newsletter, atau newsletter yang sering kamu terima di email, itu adalah konten yang dihasilkan dari profesi ini. Jadi intinya, content writer adalah seseorang yang menghasilkan sebuah konten yang membantu audiens memahami lebih lanjut tentang produk.<br><br>
+      <b>2. Tujuan penulisan</b><br><br>
+      Bisa dibilang, tujuan besar kedua profesi ini sama, yaitu menciptakan konten. Tapi kalau dilihat secara spesifik, tujuan dari kedua profesi ini akan sangat berbeda lho. Seorang copywriter akan membuat konten berupa teks yang singkat, padat, dan persuasif untuk mempengaruhi audiens agar melakukan tindakan tertentu, misalnya membeli produk. Konten yang diciptakan juga harus memperhatikan adanya tagline yang eye catching.<br><br>
+      Nah sedangkan content writer membuat konten untuk menjelaskan atau menginformasikan detail tentang suatu produk. Konten yang diproduksi oleh content writer ini lebih berfokus memberikan pengenalan, arahan, tips, yang dikemas sedemikian rupa dan mengikuti kaidah SEO best-practice. Konten yang diproduksi oleh content writer ini nantinya akan memudahkan audiens untuk memahami produk yang ia beli atau gunakan.<br><br>
+      <b>3. Bentuk tulisan</b><br><br>
+      Pernah lihat tagline iklan yang agak nyeleneh sampai bikin kamu geleng-geleng? Atau lihat script iklan yang kreatif banget sampai kamu ingat selalu? Nah itu dia hasil kerja keras dari para copywriter, lho. Seperti yang udah MinDi sebutin sebelumnya, copywriter ini kerjanya bikin tulisan yang singkat tapi tetap jelas dan tujuan yang dihasilkan harus kreatif dan menarik. Tulisan ini nantinya akan dipampang di slogan, Google Ads, Social Media Ads, Billboard, hingga iklan di stasiun radio dan TV, YouTube hingga media lainnya.<br><br>
+      Nah kalau content writer ini gak jauh-jauh dari skill SEO, nih. Sobat MinDi pasti sering menemukan konten-konten artikel yang rasanya relate banget sama kamu kan? Nah, itu dia bentuk tulisan dari content writer. Mereka akan membuat artikel, blog, bahkan podcast, e-book, email marketing atau newsletter, tulisan di blog. Nah, seperti yang sudah MinDi jelaskan di atas, itulah tugas dari content writer, lho!<br><br>
+      <b>4. Skill yang dibutuhkan masing-masing profesi</b><br><br>
+      Nah karena tujuan dan tugasnya yang berbeda, masing-masing profesi ini juga membutuhkan skill yang berbeda pula. Seorang copywriter dituntut untuk memiliki kemampuan persuasi dan tingkat kreativitas yang tinggi. Kenapa? Tentu saja agar tulisan yang dibuat bisa menarik perhatian audiens.<br><br>
+      Kemudian sekarang menjadi tugas content writer agar audiens memahami lebih lanjut tentang produk yang sedang dicari-cari. Jadi, penting sekali seorang content writer memiliki skill SEO dan kepekaan agar bisa memahami trend, insight, dan kebutuhan audiens. Mereka juga harus bisa menulis dengan menarik namun tetap mudah dipahami audiens.<br><br>
+      <b>5. Traffic</b><br><br>
+      Pengukuran kinerja masing-masing role akan sangat berbeda, sesuai dengan tujuannya. Untuk copywriting akan lebih dekat dengan paid channel, seperti Google Ads dan Social Media Ads. Pengukuran performa konten yang dihasilkan oleh copywriter juga dapat dilakukan lebih cepat dalam hitungan hari atau bahkan jam, bisa juga mengukurnya dengan KPI (Key Performance Indicator).<br><br>
+      Sementara content writing akan lebih erat kaitannya dengan strategi optimasi SEO yang merupakan pengukuran organik. Berbeda dengan copywriting yang dapat diukur secara lebih cepat, pengukuran content writing dilakukan dalam jangka panjang, bisa hingga 6 bulan.<br><br>
+      Nah itu dia beberapa perbedaan mengenai copywriting dan content writing. Bagi kamu yang pengen tahu lebih dalam lagi seputar dunia profesi tersebut, kamu bisa ikuti Bootcamp Digital Marketing di dibimbing.id.<br><br>
+      Kenapa harus dibimbing.id? Karena bootcamp yang diadakan oleh dibimbing.id bakalan kasih kamu materi lengkap, sesi mentoring, dan bahkan penyaluran kerja buat kamu yang ikut content writing. Gak sedikit, dengan mengikuti bootcamp ini kamu juga bisa konsultasi pribadi dengan mentor-mentor profesional sampai project case. Selesai mengikuti bootcamp, kamu juga akan mendapatkan sertifikat untuk mendapatkan penyaluran kerja. Nah, tunggu apalagi, segera daftar bootcamp-nya disini!
+      <br><br>
+      <b>keywords :</b> Copy writing, Content writing
+      <div id="comments">
+        <b>Komentar</b>
+        <form id="commentForm">
+          <textarea placeholder="Tulis komentar..." required></textarea>
+          <br>
+          <button type="submit">Kirim</button>
+        </form>
+        <div id="commentList"></div>
+      </div>
+    </article>
+    <aside class="sidebar">
+      <b>Artikel Terbaru</b>
+      <hr>
+      <div class="artikel">
+        <img src="icon/artikel1.png" alt="Artikel 1">
+        <div>
+          <div class="artikel-title">5 Cara Membuat Konten Viral di Instagram</div>
+          <div class="artikel-kategori">Digital Marketing</div>
+        </div>
+      </div>
+      <div class="artikel">
+        <img src="gambar/redm.png.jpeg" alt="Artikel 2">
+        <div>
+          <div class="artikel-title">Tips Sukses Karier di Era Digital</div>
+          <div class="artikel-kategori">Career</div>
+        </div>
+      </div>
+      <div class="artikel">
+        <img src="gambar/buku.png" alt="Artikel 3">
+        <div>
+          <div class="artikel-title">Belajar Data Science dari Nol</div>
+          <div class="artikel-kategori">Data Science</div>
+        </div>
+      </div>
+      <div class="artikel">
+        <img src="gambar/koran.png" alt="Artikel 4">
+        <div>
+          <div class="artikel-title">UI/UX Design: Kenapa Penting?</div>
+          <div class="artikel-kategori">UI/UX Design</div>
+        </div>
+      </div>
+      <div class="artikel">
+        <img src="gambar/laptop.png" alt="Artikel 5">
+        <div>
+          <div class="artikel-title">Trading Forex</div>
+          <div class="artikel-kategori">Trading</div>
+        </div>
+      </div>
+      <div class="artikel">
+        <img src="gambar/bumi.png" alt="Artikel 6">
+        <div>
+          <div class="artikel-title">Belajar Pemrograman mengapa penting?</div>
+          <div class="artikel-kategori">Webdevelopment</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <!-- Footer -->
+  <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#fafbfb">
+    <tr>
+      <td align="center">
+        <table width="80%" cellpadding="20" cellspacing="0">
+          <tr valign="top">
+            <!-- Column 1: Logo & Info -->
+            <td width="40%">
+              <img src="icon/logoDB.png" alt="Dibimbing Logo" width="130"><br>
+              <span>Your Career Partner</span><br><br>
+              <span>
+                PT. Dibimbing Digital Indonesia<br>
+                Jl. Kemang Utara E No. 52B, RT.8/RW.1, Bangka, Kec. Mampang Prpt.,<br>
+                Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12730
+              </span>
+              <br><br>
+              <!-- Social Media Icons-->
+              <a href="#"><img src="icon/fb.png" width="16" alt="FB" hspace="5"></a>
+              <a href="#"><img src="icon/ig.png" width="16" alt="IG" hspace="5"></a>
+              <a href="#"><img src="icon/linkind.png" width="16" alt="LinkedIn" hspace="5"></a>
+              <a href="#"><img src="icon/tiktok.png" width="16" alt="TikTok" hspace="5"></a>
+              <a href="#"><img src="icon/twiter.png" width="16" alt="Twitter" hspace="5"></a>
+            </td>
+            <!-- Column 2: Services -->
+            <td width="30%">
+            <br>
+          <b>Services</b><br><br>
+        <a href="#" style="text-decoration:none; color:#4580ee;">Video Course Online</a><br><br>
+      <a href="#" style="text-decoration:none; color:#4683f5;">Bootcamp</a><br><br>
+   <a href="#" style="text-decoration:none; color:#437ff0;">Specialized Bootcamp</a><br><br>
+       <a href="#" style="text-decoration:none; color:#3c7bf0;">Mentoring</a><br><br>
+         <a href="#" style="text-decoration:none; color:#427ae2;">For Business</a><br><br>
+         <br>
+          </td>
+            <!-- Column 3: Pages -->
+          <td width="30%">
+       <br>
+    <b>Pages</b><br><br>
+    <a href="#" style="text-decoration:none; color:#3a7af0;">Home</a><br><br>
+    <a href="#" style="text-decoration:none; color:#427deb;">About Us</a><br><br>
+    <a href="#" style="text-decoration:none; color:#3c80fd;;">Blog</a><br><br>
+      <br>
+        </td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center">
+              <font face="Arial" size="2" color="#888">
+                Copyright © 2024. PT Dibimbing Digital Indonesia. All Rights Reserved
+              </font>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
